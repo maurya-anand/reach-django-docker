@@ -9,7 +9,7 @@ Docker Compose is a tool for defining and running multi-container Docker applica
 To start the application using Docker Compose, run the following command from the root directory:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 This will start both the backend and frontend services. The Django application will be accessible at `http://0.0.0.0:8000/`, and the React application will be accessible at `http://localhost:5173/`.
@@ -17,13 +17,13 @@ This will start both the backend and frontend services. The Django application w
 To stop the services, use the following command:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 If you make changes to the application and need to rebuild the containers, use the following command:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 ## Manual setup
