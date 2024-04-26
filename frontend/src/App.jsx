@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <p>
-        The date is {currentDate} and the time is {currentTime}.
+        The date is {currentDate} and the time is {currentTime} (UTC).
       </p>
       <br />
       <p>

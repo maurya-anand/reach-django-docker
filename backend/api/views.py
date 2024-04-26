@@ -1,9 +1,9 @@
 from django.http import JsonResponse
-from datetime import datetime
+from django.utils import timezone
 
 def index(request):
-    current_time = datetime.now().strftime("%-I:%S %p")
-    current_date = datetime.now().strftime("%A %m %-Y")
+    current_time = timezone.localtime().strftime("%-I:%S %p")
+    current_date = timezone.localtime().strftime("%A %m %-Y")
 
     data = {
         'time': current_time,
