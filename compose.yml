@@ -7,6 +7,8 @@ services:
       - "5173:5173"
     depends_on:
       - backend
+    networks:
+      - dj-api
 
   backend:
     build:
@@ -14,3 +16,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    networks:
+      - dj-api
+networks:
+  dj-api:
