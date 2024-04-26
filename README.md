@@ -1,8 +1,36 @@
 # React-Django docker app
 
-This project consists of a Django backend and a React frontend, both of which are containerized using Docker.
+This project is a full-stack web application that uses a Django backend and a React frontend. The backend provides a RESTful API, and the frontend consumes this API to provide a dynamic user interface. Both the frontend and backend are containerized using Docker, allowing for easy deployment and scaling.
 
-## Backend Setup
+## Using docker compose
+
+Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you can create and start all the services from your configuration with just a single command.
+
+To start the application using Docker Compose, run the following command from the root directory:
+
+```bash
+docker-compose up
+```
+
+This will start both the backend and frontend services. The Django application will be accessible at `http://0.0.0.0:8000/`, and the React application will be accessible at `http://localhost:5173/`.
+
+To stop the services, use the following command:
+
+```bash
+docker-compose down
+```
+
+If you make changes to the application and need to rebuild the containers, use the following command:
+
+```bash
+docker-compose up --build
+```
+
+## Manual setup
+
+Before running the setup commands, ensure you are in the correct directory. For backend setup, navigate to the backend directory. For frontend setup, navigate to the frontend directory.
+
+### Backend Setup
 
 The backend is a Django application. To set it up:
 
@@ -14,7 +42,12 @@ The backend is a Django application. To set it up:
 
 > The Django application will start on `http://0.0.0.0:8000/`.
 
-## Frontend Setup
+### Running the backend container manually
+
+1. Build the Docker image for the backend using `docker build -t backend .` from the backend directory.
+1. Run the backend container using `docker run --publish 8000:8000 backend`.
+
+### Frontend Setup
 
 The frontend is a React application bootstrapped with Vite. To set it up:
 
@@ -24,18 +57,14 @@ The frontend is a React application bootstrapped with Vite. To set it up:
 
 > The React application will start on `http://localhost:5173/`.
 
-## Docker Setup
+### Running the frontend container manually
 
-Both the frontend and backend can be containerized using Docker. To do this:
-
-1. Build the Docker image for the backend using `docker build -t backend .` from the backend directory.
-1. Run the backend container using `docker run --publish 8000:8000 backend`.
 1. Build the Docker image for the frontend using `docker build -t frontend .` from the frontend directory.
 1. Run the frontend Docker container: `docker run --publish 5173:5173 frontend`.
 
-> You can also use Docker Compose to manage both containers together. To do this, `run docker-compose up` from the root directory.
-
 ## Using this Structure for Future Projects
+
+This project follows a specific structure that separates the frontend and backend into their own directories, each with its own Dockerfile. This allows each part to be developed, tested, and deployed independently.
 
 Create a folder structure in the following template:
 
@@ -60,6 +89,11 @@ Create a folder structure in the following template:
 └── README.md
 ```
 
-This project structure separates the frontend and backend into their own directories, each with its own Dockerfile. This allows each part to be developed, tested, and deployed independently.
+To use this structure for future projects, follow these steps:
 
-You can use this structure for future projects by replacing the frontend and backend directories with your own applications. The Dockerfiles and Docker Compose file may need to be updated to match the requirements of your applications.
+1. Clone or download this repository to your local machine.
+1. Replace the `frontend` and `backend` directories with your own applications.
+1. Update the Dockerfiles in each directory to match the requirements of your applications.
+1. If necessary, update the `compose.yml` file to match the services of your applications.
+1. Build and run your applications using Docker or Docker Compose as described in the sections above.
+
