@@ -4,7 +4,9 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /backend
 
-RUN pip install django django-cors-headers
+COPY requirements.txt /tmp/requirements.txt
+
+RUN pip install -r /tmp/requirements.txt
 
 COPY . . 
 
